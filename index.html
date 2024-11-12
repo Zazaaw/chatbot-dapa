@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Prospek Kerja Jurusan</title>
+    <style>
+        /* Pengaturan dasar */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f6fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            color: #333;
+        }
+
+        h1 {
+            color: #4A90E2;
+            font-size: 26px;
+            text-align: center;
+        }
+
+        label {
+            color: #555;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        button {
+            background-color: #4A90E2;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f6fd;
+            border: 1px solid #cce3f9;
+            border-radius: 8px;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #4A90E2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Chatbot Prospek Kerja Jurusan</h1>
+    <p>Selamat datang di chatbot prospek kerja jurusan vokasi! Sebelum kita mulai, kami ingin tahu beberapa hal:</p>
+    
+    <label for="jurusan">1. Apa jurusan yang kamu ambil di perguruan tinggi?</label>
+    <input type="text" id="jurusan" placeholder="Masukkan jurusan kamu">
+
+    <label for="rencana">2. Apakah kamu sudah memiliki rencana karir?</label>
+    <select id="rencana">
+        <option value="ya">Ya</option>
+        <option value="tidak">Tidak</option>
+    </select>
+
+    <label for="minat">3. Apakah ada bidang tertentu yang kamu minati?</label>
+    <input type="text" id="minat" placeholder="Masukkan bidang minatmu">
+
+    <button onclick="tampilkanPertanyaan()">Mulai Tanya Prospek Kerja</button>
+
+    <div id="output"></div>
+</div>
+
+<script>
+    const prospekKerja = {
+        "teknik informatika": "Pengembang Perangkat Lunak, Data Analyst, Network Administrator, Cybersecurity, Web Developer, Game Developer, IT Consultant, Support Teknis",
+        "statistika": "Analist Data, Aktuaris, Konsultan Statistik, Peneliti Pasar, Analisis Keuangan",
+        "bahasa jepang": "Penerjemah dan Interpreter, Staf Hubungan Internasional, Guru Bahasa Jepang, Pemandu Wisata, Marketing, Staf Administrasi",
+        "perbankan dan keuangan": "Analis Kredit, Petugas Pemasaran Produk Keuangan, Customer Service, Teller, Back Office, Manajer Cabang, Konsultan Keuangan",
+        "bahasa inggris": "Penerjemah dan Interpreter, Guru Bahasa Inggris, Penulis Konten, Editor, Customer Servis, Pemandu Wisata, Staf Hubungan Internasional",
+        "kimia": "Analis Kimia, Peneliti, Kontrol Kualitas, Teknisi Laboratorium, Petugas Kesehatan Lingkungan, Pengembang Produk",
+        "pariwisata": "Manajer Hotel, Event Organizer, Tour Guide, Travel Agent, Konsultan Pariwisata, Marketing Pariwisata, MICE Coordinator",
+        "akuntansi sektor publik": "Auditor Pemerintah, Analisis Anggaran, Akuntan Keuangan Daerah, Manajer Keuangan, Konsultan Keuangan, Peneliti Kebijakan Publik",
+        "perpustakaan": "Pustakawan, Arsiparis, Spesialis Informasi, Kurator, Peneliti, Pendidik, Manajer Proyek",
+        "administrasi perpajakan": "Petugas Pajak, Konsultan Pajak, Akuntan Pajak, Analis Pajak, Auditor Pajak",
+        "fisika": "Peneliti, Insinyur, Analis Kualitas, Konsultan, Dosen",
+        "kesekretariatan": "Sekretaris Eksekutif, Asisten Pribadi, Koordinator Administrasi, Manajer Kantor, Event Organizer, Customer Servis",
+        "anafarma": "Analis Farmasi, Pengembang Produk, Kontrol Kualitas, Peneliti, Konsultan, Petugas Pengawas Obat dan Makanan",
+        "keuangan": "Analis Keuangan, Manajer Keuangan, Akuntan, Konsultan Keuangan, Bankir, Aktuaris",
+        "metrologi dan instrumentasi": "Teknisi Metrologi, Insinyur Instrumentasi, Spesialis Kualitas, Peneliti",
+        "teknologi rekayasa instrumentasi": "Perancangan dan pengembangan sistem instrumentasi, Instalasi dan kalibrasi peralatan, Pemeliharaan dan perbaikan, Otomasi industri",
+        "administrasi perkantoran digital": "Administrative Assistant, Office Manager, Data Entry Operator, Digital Marketing Specialist, Customer Service Representative, Virtual Assistant, Entrepreneur"
+    };
+
+    function tampilkanPertanyaan() {
+        const jurusan = document.getElementById("jurusan").value.toLowerCase();
+        const rencana = document.getElementById("rencana").value;
+        const minat = document.getElementById("minat").value;
+        const output = document.getElementById("output");
+
+        let respons = "<strong>Respons Berdasarkan Jawaban Kamu:</strong><br>";
+        respons += rencana === "ya" ? "Bagus! Memiliki rencana karir adalah langkah yang baik.<br>" : "Tidak masalah! Banyak orang masih mencari informasi untuk membangun rencana karir mereka.<br>";
+        respons += minat ? Minatmu di bidang "<span class='highlight'>${minat}</span>" sangat penting untuk menentukan arah karirmu.<br><br> : "";
+
+        if (prospekKerja[jurusan]) {
+            respons += <strong>Prospek Kerja:</strong> <span class='highlight'>${prospekKerja[jurusan]}</span>;
+        } else {
+            respons += "Maaf, data prospek kerja untuk prodi tersebut belum tersedia.";
+        }
+        
+        output.innerHTML = respons;
+    }
+</script>
+
+</body>
+</html>
