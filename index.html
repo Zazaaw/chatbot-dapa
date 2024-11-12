@@ -138,23 +138,29 @@
     };
 
     function tampilkanPertanyaan() {
-        const jurusan = document.getElementById("jurusan").value.toLowerCase();
-        const rencana = document.getElementById("rencana").value;
-        const minat = document.getElementById("minat").value;
-        const output = document.getElementById("output");
+    const jurusan = document.getElementById("jurusan").value.toLowerCase();
+    const rencana = document.getElementById("rencana").value;
+    const minat = document.getElementById("minat").value;
+    const output = document.getElementById("output");
 
-        let respons = "<strong>Respons Berdasarkan Jawaban Kamu:</strong><br>";
-        respons += rencana === "ya" ? "Bagus! Memiliki rencana karir adalah langkah yang baik.<br>" : "Tidak masalah! Banyak orang masih mencari informasi untuk membangun rencana karir mereka.<br>";
-        respons += minat ? Minatmu di bidang "<span class='highlight'>${minat}</span>" sangat penting untuk menentukan arah karirmu.<br><br> : "";
+    let respons = "<strong>Respons Berdasarkan Jawaban Kamu:</strong><br>";
+    respons += rencana === "ya" 
+        ? "Bagus! Memiliki rencana karir adalah langkah yang baik.<br>" 
+        : "Tidak masalah! Banyak orang masih mencari informasi untuk membangun rencana karir mereka.<br>";
 
-        if (prospekKerja[jurusan]) {
-            respons += <strong>Prospek Kerja:</strong> <span class='highlight'>${prospekKerja[jurusan]}</span>;
-        } else {
-            respons += "Maaf, data prospek kerja untuk prodi tersebut belum tersedia.";
-        }
-        
-        output.innerHTML = respons;
+    respons += minat 
+        ? `Minatmu di bidang "<span class='highlight'>${minat}</span>" sangat penting untuk menentukan arah karirmu.<br><br>` 
+        : "";
+
+    if (prospekKerja[jurusan]) {
+        respons += `<strong>Prospek Kerja:</strong> <span class='highlight'>${prospekKerja[jurusan]}</span>`;
+    } else {
+        respons += "Maaf, data prospek kerja untuk prodi tersebut belum tersedia.";
     }
+
+    output.innerHTML = respons;
+}
+
 </script>
 
 </body>
