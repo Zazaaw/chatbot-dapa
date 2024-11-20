@@ -29,7 +29,7 @@
         }
 
         h1 {
-            color: #4A90E2;
+            color: #00691c;
             font-size: 26px;
             text-align: center;
         }
@@ -60,7 +60,7 @@
         }
 
         button {
-            background-color: #4A90E2;
+            background-color: #00691c;
             color: white;
             padding: 12px;
             border: none;
@@ -73,14 +73,14 @@
         }
 
         button:hover {
-            background-color: #357ABD;
+            background-color: #004613;
         }
 
         #output {
             margin-top: 20px;
             padding: 15px;
-            background-color: #e9f6fd;
-            border: 1px solid #cce3f9;
+            background-color: #cae9d0;
+            border: 1px solid #004613;
             border-radius: 8px;
             color: #333;
             font-size: 16px;
@@ -88,7 +88,7 @@
         }
 
         .highlight {
-            color: #4A90E2;
+            color: #078f2b;
             font-weight: bold;
         }
     </style>
@@ -119,22 +119,56 @@
 <script>
     const prospekKerja = {
         "teknik informatika": "Pengembang Perangkat Lunak, Data Analyst, Network Administrator, Cybersecurity, Web Developer, Game Developer, IT Consultant, Support Teknis",
+        "Teknik Informatika": "Pengembang Perangkat Lunak, Data Analyst, Network Administrator, Cybersecurity, Web Developer, Game Developer, IT Consultant, Support Teknis",
+        "TEKNIK INFORMATIKA": "Pengembang Perangkat Lunak, Data Analyst, Network Administrator, Cybersecurity, Web Developer, Game Developer, IT Consultant, Support Teknis",
         "statistika": "Analist Data, Aktuaris, Konsultan Statistik, Peneliti Pasar, Analisis Keuangan",
+        "Statistika": "Analist Data, Aktuaris, Konsultan Statistik, Peneliti Pasar, Analisis Keuangan",
+        "STATISTIKA": "Analist Data, Aktuaris, Konsultan Statistik, Peneliti Pasar, Analisis Keuangan",
         "bahasa jepang": "Penerjemah dan Interpreter, Staf Hubungan Internasional, Guru Bahasa Jepang, Pemandu Wisata, Marketing, Staf Administrasi",
+        "Bahasa Jepang": "Penerjemah dan Interpreter, Staf Hubungan Internasional, Guru Bahasa Jepang, Pemandu Wisata, Marketing, Staf Administrasi",
+        "BAHASA JEPANG": "Penerjemah dan Interpreter, Staf Hubungan Internasional, Guru Bahasa Jepang, Pemandu Wisata, Marketing, Staf Administrasi",
         "perbankan dan keuangan": "Analis Kredit, Petugas Pemasaran Produk Keuangan, Customer Service, Teller, Back Office, Manajer Cabang, Konsultan Keuangan",
+        "Perbankan Dan Keuangan": "Analis Kredit, Petugas Pemasaran Produk Keuangan, Customer Service, Teller, Back Office, Manajer Cabang, Konsultan Keuangan",
+        "PERBANKAN DAN KEUANGAN": "Analis Kredit, Petugas Pemasaran Produk Keuangan, Customer Service, Teller, Back Office, Manajer Cabang, Konsultan Keuangan",
         "bahasa inggris": "Penerjemah dan Interpreter, Guru Bahasa Inggris, Penulis Konten, Editor, Customer Servis, Pemandu Wisata, Staf Hubungan Internasional",
+        "Bahasa Inggris": "Penerjemah dan Interpreter, Guru Bahasa Inggris, Penulis Konten, Editor, Customer Servis, Pemandu Wisata, Staf Hubungan Internasional",
+        "BAHASA INGGRIS": "Penerjemah dan Interpreter, Guru Bahasa Inggris, Penulis Konten, Editor, Customer Servis, Pemandu Wisata, Staf Hubungan Internasional",
         "kimia": "Analis Kimia, Peneliti, Kontrol Kualitas, Teknisi Laboratorium, Petugas Kesehatan Lingkungan, Pengembang Produk",
+        "Kimia": "Analis Kimia, Peneliti, Kontrol Kualitas, Teknisi Laboratorium, Petugas Kesehatan Lingkungan, Pengembang Produk",
+        "KIMIA": "Analis Kimia, Peneliti, Kontrol Kualitas, Teknisi Laboratorium, Petugas Kesehatan Lingkungan, Pengembang Produk",
         "pariwisata": "Manajer Hotel, Event Organizer, Tour Guide, Travel Agent, Konsultan Pariwisata, Marketing Pariwisata, MICE Coordinator",
+        "Pariwisata": "Manajer Hotel, Event Organizer, Tour Guide, Travel Agent, Konsultan Pariwisata, Marketing Pariwisata, MICE Coordinator",
+        "PARIWISATA": "Manajer Hotel, Event Organizer, Tour Guide, Travel Agent, Konsultan Pariwisata, Marketing Pariwisata, MICE Coordinator",
         "akuntansi sektor publik": "Auditor Pemerintah, Analisis Anggaran, Akuntan Keuangan Daerah, Manajer Keuangan, Konsultan Keuangan, Peneliti Kebijakan Publik",
+        "Akuntansi Sektor Publik": "Auditor Pemerintah, Analisis Anggaran, Akuntan Keuangan Daerah, Manajer Keuangan, Konsultan Keuangan, Peneliti Kebijakan Publik",
+        "AKUNTANSI SEKTOR PUBLIK": "Auditor Pemerintah, Analisis Anggaran, Akuntan Keuangan Daerah, Manajer Keuangan, Konsultan Keuangan, Peneliti Kebijakan Publik",
         "perpustakaan": "Pustakawan, Arsiparis, Spesialis Informasi, Kurator, Peneliti, Pendidik, Manajer Proyek",
+        "Perpustakaan": "Pustakawan, Arsiparis, Spesialis Informasi, Kurator, Peneliti, Pendidik, Manajer Proyek",
+        "PERPUSTAKAAN": "Pustakawan, Arsiparis, Spesialis Informasi, Kurator, Peneliti, Pendidik, Manajer Proyek",
         "administrasi perpajakan": "Petugas Pajak, Konsultan Pajak, Akuntan Pajak, Analis Pajak, Auditor Pajak",
+        "Administrasi Perpajakan": "Petugas Pajak, Konsultan Pajak, Akuntan Pajak, Analis Pajak, Auditor Pajak",
+        "ADMINISTRASI PERPAJAKAN": "Petugas Pajak, Konsultan Pajak, Akuntan Pajak, Analis Pajak, Auditor Pajak",
         "fisika": "Peneliti, Insinyur, Analis Kualitas, Konsultan, Dosen",
+        "Fisika": "Peneliti, Insinyur, Analis Kualitas, Konsultan, Dosen",
+        "FISIKA": "Peneliti, Insinyur, Analis Kualitas, Konsultan, Dosen",
         "kesekretariatan": "Sekretaris Eksekutif, Asisten Pribadi, Koordinator Administrasi, Manajer Kantor, Event Organizer, Customer Servis",
-        "anafarma": "Analis Farmasi, Pengembang Produk, Kontrol Kualitas, Peneliti, Konsultan, Petugas Pengawas Obat dan Makanan",
+        "Kesekretariatan": "Sekretaris Eksekutif, Asisten Pribadi, Koordinator Administrasi, Manajer Kantor, Event Organizer, Customer Servis",
+        "KESEKRETARIATAN": "Sekretaris Eksekutif, Asisten Pribadi, Koordinator Administrasi, Manajer Kantor, Event Organizer, Customer Servis",
+        "analisis farmasi dan makanan": "Analis Farmasi, Pengembang Produk, Kontrol Kualitas, Peneliti, Konsultan, Petugas Pengawas Obat dan Makanan",
+        "Analisis Farmasi Dan Makanan": "Analis Farmasi, Pengembang Produk, Kontrol Kualitas, Peneliti, Konsultan, Petugas Pengawas Obat dan Makanan",
+        "ANALISIS FARMASI DAN MAKANAN": "Analis Farmasi, Pengembang Produk, Kontrol Kualitas, Peneliti, Konsultan, Petugas Pengawas Obat dan Makanan",
         "keuangan": "Analis Keuangan, Manajer Keuangan, Akuntan, Konsultan Keuangan, Bankir, Aktuaris",
+        "Keuangan": "Analis Keuangan, Manajer Keuangan, Akuntan, Konsultan Keuangan, Bankir, Aktuaris",
+        "KEUANGAN": "Analis Keuangan, Manajer Keuangan, Akuntan, Konsultan Keuangan, Bankir, Aktuaris",
         "metrologi dan instrumentasi": "Teknisi Metrologi, Insinyur Instrumentasi, Spesialis Kualitas, Peneliti",
+        "Metrologi Dan Instrumentasi": "Teknisi Metrologi, Insinyur Instrumentasi, Spesialis Kualitas, Peneliti",
+        "METROLOGI DAN INSTRUMENTASI": "Teknisi Metrologi, Insinyur Instrumentasi, Spesialis Kualitas, Peneliti",
         "teknologi rekayasa instrumentasi": "Perancangan dan pengembangan sistem instrumentasi, Instalasi dan kalibrasi peralatan, Pemeliharaan dan perbaikan, Otomasi industri",
-        "administrasi perkantoran digital": "Administrative Assistant, Office Manager, Data Entry Operator, Digital Marketing Specialist, Customer Service Representative, Virtual Assistant, Entrepreneur"
+        "Teknologi Rekayasa Instrumentasi": "Perancangan dan pengembangan sistem instrumentasi, Instalasi dan kalibrasi peralatan, Pemeliharaan dan perbaikan, Otomasi industri",
+        "TEKNOLOGI REKAYASA INSTRUMENTASI": "Perancangan dan pengembangan sistem instrumentasi, Instalasi dan kalibrasi peralatan, Pemeliharaan dan perbaikan, Otomasi industri",
+        "administrasi perkantoran digital": "Administrative Assistant, Office Manager, Data Entry Operator, Digital Marketing Specialist, Customer Service Representative, Virtual Assistant, Entrepreneur",
+        "Administrasi Perkantoran Digital": "Administrative Assistant, Office Manager, Data Entry Operator, Digital Marketing Specialist, Customer Service Representative, Virtual Assistant, Entrepreneur",
+        "ADMINISTRASI PERKANTORAN DIGITAL": "Administrative Assistant, Office Manager, Data Entry Operator, Digital Marketing Specialist, Customer Service Representative, Virtual Assistant, Entrepreneur"
     };
 
     function tampilkanPertanyaan() {
